@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+    
+    .header__container {
+        /* Garante que o espaçamento lateral não seja muito grande em telas pequenas */
+        padding: 10px 15px; 
+    } 
+    .header__menu { 
+        display: none; 
+    }
+    .header__logo {
+        font-size: 18px;
+    }
+    .header__nav {
+        
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: 576px) {
+    
+    .banner {
+        height: 250px; }
+    .banner__title {
+        font-size: 30px;   
+        padding: 0 10px; 
+    }
+    
+    .banner__subtitle { 
+        font-size: 14px;
+    }
+}
