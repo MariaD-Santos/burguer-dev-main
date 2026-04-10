@@ -9,3 +9,6 @@ descr VARCHAR (500),
 preco FLOAT,
 foto VARCHAR (500)
 );
+
+INSERT INTO  produtos(produto, descr, preco, foto) 
+VALUES ("hamburbur", "hamham",345,"https://assets.biggreenegg.eu/app/uploads/2019/03/28145521/topimage-classic-hamburger-2019m04-800x534.jpg")
