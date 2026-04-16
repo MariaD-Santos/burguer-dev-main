@@ -282,11 +282,31 @@ body {
     font-size: 13px;
 }
 
+.button--small-product {
+    background-color: #155263;
+    color: white;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
 .button--small:hover {
     background-color: #ff9a3c;
     transform: scale(1.1);
 }
+.button--small-product:hover {
+    background-color: #ff9a3c;
+    transform: scale(1.1);
+}
 
+.button--primary-product {
+    background-color: #ff6f3c;
+    color: white;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(255, 111, 60, 0.3);
+}
 .button--primary {
     background-color: #ff6f3c;
     color: white;
@@ -296,7 +316,7 @@ body {
     box-shadow: 0 4px 15px rgba(255, 111, 60, 0.3);
 }
 
-.button--primary:hover {
+.button--primary-product:hover {
     background-color: #155263;
     color: #ffc93c;
     transform: translateY(-3px);
@@ -460,12 +480,6 @@ h1 {
     line-height: 1.6;
 }
 
-/* Preços */
-.price-old {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 1.1rem;
-}
 
 .price-current {
     font-size: 2.2rem;
@@ -485,17 +499,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Badge Cacau */
-.cacau-tag {
-    display: inline-block;
-    align-self: flex-start;
-    background-color: #7a2b2b;
-    color: white;
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
 
 /* Footer */
 .footer {

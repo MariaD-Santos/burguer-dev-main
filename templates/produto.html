@@ -64,28 +64,20 @@
 
 <div class="product-container">
     <div class="product-image">
-        <img src="https://assets.multiplan.com.br/Multiplan/filer_public/78/06/78069957-53dc-4923-81a4-df75babf6b66/ovos-de-pascoa-diferentes-sabores.jpg?ims=1920x" alt="Ovo de Páscoa">
+        <img src="{{produto.foto}}" alt="Ovo de Páscoa">
     </div>
 
     <div class="product-details">
-        <span class="sku">SKU # 1003505</span>
-        <h1></h1>
+        <h1>{{produto.produto}}</h1>
         
         <p class="description">
-            <strong>Ovo de chocolate ao leite e branco</strong> com tabletes dos dois sabores. 
-            Uma combinação cremosa e equilibrada para uma Páscoa cheia de sabor.
+           {{produto.descr}}
         </p>
 
-        <div class="price-old">R$ 64,99</div>
-        <div class="price-current">R$ 59,99 <small style="font-size: 14px;">/un</small></div>
-
-        <div class="out-of-stock">
-            Sentimos Muito! <br>
-            <span style="font-weight: normal; font-size: 13px;">Produto sem estoque para sua localização</span>
-        </div>
-
-        <div class="cacau-tag">2 CACAUS ⓘ</div>
+        <div class="price-old">{{produto.preco + 50}}</div>
+        <div class="price-current">{{produto.preco}}<small style="font-size: 14px;">/un</small></div>
     </div>
+    
 </div>
 
 </body>
