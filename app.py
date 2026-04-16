@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, session
 from model.produto import rec_produtos
 from model.produto import rec_destaq
 from model.produto import recuperar_produto
@@ -21,14 +21,16 @@ def pagina_destaques(codigo):
 def pagina_cadastro():
     return render_template("cadastro.html")
 
-# @app.route("/cadastro/post", methods = ["POST"])
-# def cadastrar_usuario():
-#     nome = request.form.get("usuario")
-#     senha = request.form.get("senha")
-#     if cadastro_usuario(usuario, senha):
-#         return redirect("/home")
-#     else:
-#         return "Erro ao adicionar o usuário!"
+@app.route("/cadastro/post", methods = ["POST"])
+def cadastrar_usuario():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+    if cadastro_usuario(usuario, senha):
+        return redirect("/")
+    else:
+        return "Erro ao adicionar o usuário!"
+
+
 
 
     
