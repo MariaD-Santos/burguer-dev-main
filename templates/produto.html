@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,28 +58,37 @@
       </button>
     </div>
   </header>
- {% block conteudo %}
+  {% block conteudo %}
+
   <body>
 
-<div class="product-container">
-    <div class="product-image">
+    <div class="product-container">
+      <div class="product-image">
         <img src="{{produto.foto}}" alt="Ovo de Páscoa">
-    </div>
+      </div>
 
-    <div class="product-details">
+      <div class="product-details">
+        <span class="sku">SKU: {{produto.id}}</span>
         <h1>{{produto.produto}}</h1>
-        
+
         <p class="description">
-           {{produto.descr}}
+          {{produto.descr}}
         </p>
 
-        <div class="price-old">{{produto.preco + 50}}</div>
-        <div class="price-current">{{produto.preco}}<small style="font-size: 14px;">/un</small></div>
-    </div>
-    
-</div>
+        <div class="price-old" style="text-decoration: line-through; color: #888; font-size: 1.1rem;">
+          R$ {{produto.preco + 50}}
+        </div>
+        <div class="price-current">
+          R$ {{produto.preco}}<small style="font-size: 14px;">/un</small>
+        </div>
 
-</body>
+        <a href="/comprar/{{produto.id}}" class="btn-buy">
+          Comprar Agora
+        </a>
+      </div>
+    </div>
+
+  </body>
   {% endblock %}
   <footer class="footer">
     <p class="footer__text">

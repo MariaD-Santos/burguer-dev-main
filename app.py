@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, request, session
 from model.produto import rec_produtos
 from model.produto import rec_destaq
 from model.produto import recuperar_produto
-from model.cadastro import cadastro_usuario
+from model.cadastro import Usuario, cadastro_usuario
 app = Flask(__name__)
 
 @app.route("/")
@@ -30,10 +30,18 @@ def cadastrar_usuario():
     else:
         return "Erro ao adicionar o usuário!"
 
+@app.route("/logar/usuario", methods = ["POST"])
+def logar_usuario():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
 
+    resultado = Usuario.logar(usuario,senha)
 
+    if not resultado:
+        session["usuario_logado"] = resultado
+        return redirect("/")
 
-    
+ 
 
 if __name__ == "__main__":
     app.run(debug=True)
