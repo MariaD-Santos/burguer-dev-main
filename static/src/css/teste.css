@@ -592,90 +592,36 @@ h1 {
 
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-/* Paleta de Cores: Ketchup (#e11d48) e Mostarda (#facc15) */
-
-/* Botão Flutuante (O "Peça Agora") */
-.open-cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #155263; /* Vermelho vibrante */
-  color: #fff;
-  padding: 15px;
-  border-radius: 12px; /* Menos redondo, mais estilo "cardápio" */
-  cursor: pointer;
-  z-index: 1100;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: 3px solid #facc15; /* Borda amarela chamativa */
-  box-shadow: 0 4px 0 #9f1239; /* Efeito de profundidade */
-  transition: all 0.2s active;
-}
-
-.open-cart:hover {
-  background: #facc15;
-  color: #e11d48;
-  transform: scale(1.05);
-}
-
-/* Painel do Carrinho (A "Bandeja") */
+/* Estilo do container principal do carrinho */
 .cart {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 350px;
-  height: 100vh;
-  background: #fff;
-  border-left: 8px solid #facc15; /* Detalhe lateral em amarelo */
-  box-shadow: -10px 0 20px rgba(0,0,0,0.1);
-  padding: 25px;
-  
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animação "elástica" */
-  
-  z-index: 1000;
-  font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    font-family: sans-serif;
 }
 
-/* Container de cada item (O "Combo") */
-.cart-items {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 12px;
-  margin-bottom: 10px;
-  background: #fff;
-  border-bottom: 2px dashed #dddddd; /* Efeito de cupom fiscal destacado */
+/* Botão de fechar (X) */
+.close-cart {
+    align-self: flex-end;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 10px;
 }
 
-/* Formatação da Imagem (O Lanche) */
-.cart-items img {
-  width: 65px;
-  height: 65px;
-  object-fit: cover; /* Garante que a foto não estique */
-  border-radius: 8px;
-  border: 2px solid #facc15; /* Bordinha cor de queijo/mostarda */
-  background: #fefce8;
-  flex-shrink: 0; /* Impede que a imagem amasse em telas menores */
+/* Título do carrinho */
+h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
 }
 
-/* Formatação do Texto (A descrição) */
-.cart-items p {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  font-size: 0.95rem;
-  color: #333;
-  font-weight: 600;
-  line-height: 1.2;
-  /* Se a descrição for muito longa, limita a 2 linhas */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Efeito ao passar o mouse no item */
-.cart-items:hover {
-  background-color: #fffbeb;
-  transition: background 0.2s ease;
-}
+/* Área dos itens (com scroll caso tenha muitos produtos) */

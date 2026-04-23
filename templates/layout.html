@@ -16,7 +16,7 @@
   <!-- Incluir os links para CSS (pode ter mais arquivos ou arquivos com nomes diferentes) -->
   <link rel="stylesheet" href="/static/src/css/teste.css">
 
-  <script src="/js/carrinho.js"></script>
+  <script src="/static/js/carrinho.js"></script>
 </head>
 
 <body>
@@ -55,7 +55,19 @@
         <a href="#" class="header__icon"><span class="material-symbols-outlined">thumb_up</span></a>
         <a href="#" class="header__icon"><span class="material-symbols-outlined">photo_camera</span></a>
       </div>
+      <div class="bg">
+        <aside class="cart" id="carrinho">
+          <h2>Seu Carrinho</h2>
 
+          <div class="cart-items"></div>
+
+          <div class="cart-footer">
+            <strong>Total: R$ 0,00</strong>
+            <button>Finalizar</button>
+          </div>
+      </aside>
+      </div>
+      
       <button class="header__toggle">
         <span class="material-symbols-outlined">menu</span>
       </button>
