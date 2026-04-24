@@ -29,6 +29,19 @@ def cadastrar_usuario():
         return redirect("/")
     else:
         return "Erro ao adicionar o usuário!"
+    
+@app.route("/logar")
+def pagina_login():
+    return render_template("login.html")
+
+@app.route("/logar/post", methods = ["POST"])
+def logar_user():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+    if cadastro_usuario(usuario, senha):
+        return redirect("/")
+    else:
+        return "Erro ao logar o usuário!"
 
 @app.route("/logar/usuario", methods = ["POST"])
 def logar_usuario():
