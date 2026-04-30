@@ -26,10 +26,12 @@ def pagina_cadastro():
 def cadastrar_usuario():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
-    if cadastro_usuario(usuario, senha):
+
+    resultado = Usuario.logar(usuario,senha)
+
+    if not resultado:
+        session["usuario_logado"] = resultado
         return redirect("/")
-    else:
-        return "Erro ao adicionar o usuário!"
     
 @app.route("/logar")
 def pagina_login():
@@ -44,18 +46,9 @@ def logar_user():
     else:
         return "Erro ao logar o usuário!"
 
-@app.route("/logar/usuario", methods = ["POST"])
-def logar_usuario():
-    usuario = request.form.get("usuario")
-    senha = request.form.get("senha")
 
-    resultado = Usuario.logar(usuario,senha)
 
-    if not resultado:
-        session["usuario_logado"] = resultado
-        return redirect("/")
-
-@app.route("/api/get/carrinho", methods = ["GET"])
+@app.route("/carrinho", methods = ["GET"])
 def api_get_carrinho ():
     if "usuario_logado" in session:
         carrinho = recuperar_carrinho(session["usuario_logado", "codigo_usuario"])

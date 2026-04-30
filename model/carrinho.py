@@ -12,7 +12,11 @@ def recuperar_carrinho(nome_perfil:str) -> list:
                         INNER JOIN usuarios ON usuarios.nome_perfil = usuarios.nome_perfil;
                         WHERE carrinhos.usuario = %s
                             """, [nome_perfil])
+      
+
+        carrinho = cursor.fetchall()
+
         conexao.commit()
         conexao.close()
 
-        return True
+        return carrinho

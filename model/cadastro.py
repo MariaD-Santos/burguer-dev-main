@@ -24,11 +24,11 @@ class Usuario:
 
     def cadastrar(self):
         
-            conexao, cursor = conexao()
+            conexao, cursor = criar_conexao()
 
             cursor.execute("""
 
-                        INSERT INTO cadastro
+                        INSERT INTO usuarios
                         (usuario, senha)
                         VALUES
                         (%s, %s)
@@ -40,9 +40,9 @@ class Usuario:
     
 
     def logar(usuario:str, senha:str) ->dict:
-         conexao, cursor = conexao()
+         conexao, cursor = criar_conexao()
          cursor.execute("""
-            SELECT * FROM cadastro WHERE usuario = %s and senha = %s
+            SELECT * FROM usuarios WHERE usuario = %s and senha = %s
                         """, [usuario, senha])
          resultado = cursor.fetchone()
          conexao.close()

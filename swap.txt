@@ -1,0 +1,10 @@
+@app.route("/logar/usuario", methods = ["POST"])
+def logar_usuario():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+
+    resultado = Usuario.logar(usuario,senha)
+
+    if not resultado:
+        session["usuario_logado"] = resultado
+        return redirect("/")
