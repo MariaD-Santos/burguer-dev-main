@@ -1,4 +1,5 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, jsonify, redirect, render_template, request, session
+from model.carrinho import recuperar_carrinho
 from model.produto import rec_produtos
 from model.produto import rec_destaq
 from model.produto import recuperar_produto
@@ -54,7 +55,13 @@ def logar_usuario():
         session["usuario_logado"] = resultado
         return redirect("/")
 
- 
+@app.route("/api/get/carrinho", methods = ["GET"])
+def api_get_carrinho ():
+    if "usuario_logado" in session:
+        carrinho = recuperar_carrinho(session["usuario_logado", "codigo_usuario"])
+        return jsonify(carrinho), 200
+    else:
+        return jsonify({"message": "USUARIO NÃO ENCONTRADO"}), 401
 
 if __name__ == "__main__":
     app.run(debug=True)
