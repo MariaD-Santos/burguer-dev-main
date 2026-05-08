@@ -21,7 +21,7 @@ def recuperar_carrinho(nome_perfil:str) -> list:
 
         return carrinho
 
-def inserir_item(nome_perfil, cod_produto, quantidade):
+def inserir_item(cod_usuario, cod_produto, quantidade):
     conexao, cursor = criar_conexao()
     cursor.execute("""
                 select cod_carrinho from carrinhos
@@ -29,7 +29,7 @@ def inserir_item(nome_perfil, cod_produto, quantidade):
                 and finalizado = 0
                 limit 1;
 
-    """, [nome_perfil])
+    """, [cod_usuario])
 
 
     resultado_carrinho = cursor.fetchone()
@@ -43,7 +43,7 @@ def inserir_item(nome_perfil, cod_produto, quantidade):
 
                 INSERT INTO carrinhos(nome_perfil, finalizado)
                 VALUES (%s, 0);
-    """, [nome_perfil],)
+    """, [cod_usuario])
         
     cod_carrinho = cursor.lastrowid
 
