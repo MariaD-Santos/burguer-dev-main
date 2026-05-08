@@ -29,7 +29,7 @@ class Usuario:
             cursor.execute("""
 
                         INSERT INTO usuarios
-                        (usuario, senha)
+                        (nome_perfil, senha)
                         VALUES
                         (%s, %s)
                            """, [self.usuario, self.senha])
@@ -38,11 +38,11 @@ class Usuario:
 
             return True
     
-
-    def logar(usuario:str, senha:str) ->dict:
+    @staticmethod
+    def logar(usuario:str, senha:str) -> dict:
          conexao, cursor = criar_conexao()
          cursor.execute("""
-            SELECT * FROM usuarios WHERE usuario = %s and senha = %s
+            SELECT * FROM usuarios WHERE nome_perfil = %s and senha = %s
                         """, [usuario, senha])
          resultado = cursor.fetchone()
          conexao.close()

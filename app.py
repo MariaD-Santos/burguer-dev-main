@@ -6,6 +6,8 @@ from model.produto import recuperar_produto
 from model.cadastro import Usuario, cadastro_usuario
 app = Flask(__name__)
 
+app.secret_key = "Horns"
+
 @app.route("/")
 def pagina_inicial():
     produtos = rec_produtos()
@@ -26,12 +28,10 @@ def pagina_cadastro():
 def cadastrar_usuario():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
-
-    resultado = Usuario.logar(usuario,senha)
-
-    if not resultado:
-        session["usuario_logado"] = resultado
+    novo_usuario = Usuario(usuario,senha)
+    if Usuario.cadastrar(novo_usuario):
         return redirect("/")
+
     
 @app.route("/logar")
 def pagina_login():
@@ -41,10 +41,14 @@ def pagina_login():
 def logar_user():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
-    if cadastro_usuario(usuario, senha):
+    print(usuario)
+    resultado = Usuario.logar(usuario,senha)
+
+    if resultado:
+        session["usuario_logado"] = resultado
         return redirect("/")
-    else:
-        return "Erro ao logar o usuário!"
+    
+    print(usuario,senha)
 
 
 
@@ -55,6 +59,7 @@ def api_get_carrinho ():
         return jsonify(carrinho), 200
     else:
         return jsonify({"message": "USUARIO NÃO ENCONTRADO"}), 401
+    
     
 @app.route("/api/post/item_carrinho", methods= ["POST"])
 def api_post_item_carrinho():
